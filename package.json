@@ -10,7 +10,9 @@
   "author": "Hannah Thompson",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.8"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
