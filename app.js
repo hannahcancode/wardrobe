@@ -1,15 +1,28 @@
+require('mongodb');
+require('ejs');
+const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const routes = require('./routes/index');
 
-import 'mongodb';
-import * as express from 'express';
-import * as mongoose from 'mongoose';
-import * as routes from './routes/index';
+const { connection: db } = mongoose;
 
-// const db = mongoose.connection;
+mongoose.connect('mongodb://localhost/wardrobe');
+
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('connected to ward database')
+});
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/userauthapp');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
