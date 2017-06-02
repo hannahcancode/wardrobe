@@ -16,10 +16,8 @@ exports.getSingleItem = (req, res) => {
 };
 
 exports.createItem = (req, res) => {
-  const name = req.query.itemName;
-  console.log(name);
   const item = new Item();
-  item.name = name;
+  item.imageUrl = req.head.imageUrl;
   item.save()
     .then((items) => {
       res.json(items);
@@ -30,7 +28,7 @@ exports.editItems = (req, res) => {
   const url = req.query.newURL;
   console.log(url);
   Item.findOneAndUpdate({ _id: req.params.id }, { imageUrl: url }, {
-    new: true, // returns new ingredient
+    new: true,
   })
   .then((items) => {
     res.json(items);
