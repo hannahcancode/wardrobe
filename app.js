@@ -9,7 +9,7 @@ const api = require('./routes/api');
 
 const { connection: db } = mongoose;
 
-mongoose.connect('mongodb://admin:9976clueless@ds161001.mlab.com:61001/wardrobe');
+mongoose.connect(process.env.MLAB);
 
 
 db.on('error', console.error.bind(console, 'connection error:'));
