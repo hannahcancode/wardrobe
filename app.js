@@ -5,15 +5,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
+const api = require('./routes/api');
 
 const { connection: db } = mongoose;
 
-mongoose.connect('mongodb://localhost/wardrobe');
+mongoose.connect('mongodb://admin:9976clueless@ds161001.mlab.com:61001/wardrobe');
 
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('connected to ward database')
+  console.log('connected to ward database');
 });
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
+app.use('/api', api);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
