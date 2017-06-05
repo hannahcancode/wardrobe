@@ -18,6 +18,7 @@ exports.getSingleItem = (req, res) => {
 exports.createItem = (req, res) => {
   const item = new Item();
   item.imageUrl = req.query.imageUrl;
+  item.category = req.query.cat;
   item.save()
     .then((items) => {
       res.json(items);
