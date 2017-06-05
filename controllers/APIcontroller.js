@@ -35,6 +35,16 @@ exports.editItems = (req, res) => {
   });
 };
 
+exports.addCategory = (req, res) => {
+  const category = req.query.cat;
+  Item.findOneAndUpdate({ _id: req.params.id }, { category: category }, {
+    new: true,
+  })
+  .then((items) => {
+    res.json(items);
+  });
+};
+
 exports.deleteItems = (req, res) => {
   Item.findOneAndRemove({ _id: req.params.id })
   .then((items) => {
