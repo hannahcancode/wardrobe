@@ -4,7 +4,9 @@
   "description": "That Clueless app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "watch": "nodemon app.js",
+    "test": "mocha"
   },
   "repository": "https://github.com/hannahcancode/wardrobe",
   "author": "Hannah Thompson",
@@ -17,11 +19,13 @@
     "mongoose": "^4.9.8"
   },
   "devDependencies": {
+    "chai": "^4.0.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
-    "jest": "^20.0.1"
+    "jest": "^20.0.1",
+    "mocha": "^3.4.2"
   }
 }
